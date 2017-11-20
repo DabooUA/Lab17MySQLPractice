@@ -1,9 +1,12 @@
 1. select * from customers;
+
 2. select distinct Country from customers;
 
 
-3. elect * from customers
+
+3. select * from customers 
 where customerID like 'BL%'
+
 4. select * 
 from orders
 limit 100;
@@ -11,18 +14,26 @@ limit 100;
 
 
 
+
 5. select * 
-from customers
+from customers 
 where postalcode = 1010 or postalcode =3012 or postalcode =12209 or postalcode =05023;
+
+ / select * 
+from customers 
+where postalcode IN (1010, 3012,12209,05023);
+
 6. select * 
 from orders
  where ShipRegion is not null;
 
 
 
+
 7. select * 
-from customers
+from customers 
 order by Country, City ASC;
+
 
 
 
@@ -30,38 +41,52 @@ order by Country, City ASC;
 values('SBR','Grand Circus', 'Serhiy Bardysh', 'Student', '1234 Main Str.', 'Detroit', 'MI', '48125', 'USA', '555-8578','null');
 
 
-9. update orders
+
+9. update orders 
 set ShipRegion = 'EuroZone'
 where ShipCountry = 'France';
+
 10. delete from orderdetails 
 where Quantity = 1;
+
 11. select avg(Quantity)
 from orderdetails;select min(Quantity)
 from orderdetails;select max(Quantity)
 from orderdetails;
+
+select avg(Quantity), min(Quantity)
+, max(Quantity) 
+from orderdetails;
+
 12. select avg(Quantity)
 from orderdetails
 group by OrderID;select max(Quantity)
 from orderdetails
 group by OrderID;select min(Quantity)
 from orderdetails
-group by OrderID;
+ group by OrderID;
+
 13. select (customerid)
-from orders
+from orders 
 where OrderID = 10290;
-14. select * from orders
-inner join customers on orders.CustomerID=customrts.customerID;
 
-select * from orders
-left join customers on orders.CustomerID=customrts.customerID;
+14. select * from orders 
+inner join customers on orders.CustomerID=customers.customerID;
 
-select *
- from orders
+    select * from orders 
+left join customers on orders.CustomerID=customers.customerID;
+
+    select *
+ from orders 
 right join customers on orders.CustomerID=customers.customerID;
+
 15. select  firstname 
-from employees
+from employees 
 where ReportsTo is null;
-16. SELECT e1.FirstName
-FROM employees AS e1
+
+16. SELECT e1.FirstName 
+FROM employees AS e1 
 JOIN employees AS e2 ON (e1.ReportsTo = e2.EmployeeID)
 WHERE e2.FirstName = 'Andrew';
+
+select FirstName from employees where ReportsTo = 2;
